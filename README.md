@@ -41,25 +41,35 @@ end
 
 What it does is, step by step:
 
-`require 'pacto'`: imports pacto module
+Imports pacto module: 
+```ruby
+require 'pacto'
+``` 
 
-`task :generate do`: starts the definition of a rake task called `generate`
+Starts the definition of a rake task called `generate`:
+```ruby
+task :generate do
+```
 
-`    WebMock.allow_net_connect!`: allows external connections (since they are not enabled by default)
+Allows external connections (since they are not enabled by default):
+```ruby
+    WebMock.allow_net_connect!
+```
 
+Sets the path to where our generated contract tests will be stored:
 ```ruby
     Pacto.configure do |config|
       config.contracts_path = 'contracts'
     end
 ```
-: Sets the path to where our generated contract tests will be stored
 
-And the most important line:
+Tells pacto to listen for requests we'll make and to generate contracts based on them:
+```ruby
+    Pacto.generate!
+```
 
-`    Pacto.generate!`: tells pacto to listen for requests we'll make and to generate contracts based on them
+Sends a HTTP request to http://pactodex.herokuapp.com/pokemons:
 
-To finish
-
-`    Net::HTTP.get('pactodex.herokuapp.com', '/pokemons')`
-
-sends a HTTP request to http://pactodex.herokuapp.com/pokemons
+```ruby
+    Net::HTTP.get('pactodex.herokuapp.com', '/pokemons')
+```
