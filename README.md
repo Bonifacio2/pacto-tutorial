@@ -160,3 +160,47 @@ and each item of this array must have a "name" (string), a "type" (string) and a
     "required": true
   }
 ```
+
+## Validating a contract
+
+To run our contract we'll create a rake task with the following content.
+
+```ruby
+task :validate do
+  WebMock.allow_net_connect!
+  contracts = Pacto.load_contracts('contracts', 'pactodex.herokuapp.com')
+  test_results = contracts.validate_all
+  if test_results.all?(&:empty?)
+    puts 'success'
+  else
+    puts test_results
+    fail
+  end
+end
+```
+
+In this line we are loading the contracts in the 'contracts' folder and telling pacto to run them against the 'pactodex.herokuapp.com' url:
+
+`Pacto.load_contracts('contracts', 'pactodex.herokuapp.com')`
+
+then we validate the test and store the results in the `test_results` variable
+```ruby
+test_results = contracts.validate_all
+```
+
+The condition in the `if` block is only `true` if all test results are empty, which means no error occurred.
+
+
+```ruby
+if test_results.all?(&:empty?)
+    puts 'success'
+  else
+    puts test_results
+    fail
+  end
+```
+
+To run our `validate` task we just have to use `bundle exec rake validate` on the command line/terminal.
+
+If everything went well you'll see a `success` message printed to your terminal. If something went wrong an error message with more details will be shown and the task will be aborted.
+
