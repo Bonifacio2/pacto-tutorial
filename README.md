@@ -73,3 +73,90 @@ Sends a HTTP request to http://pactodex.herokuapp.com/pokemons:
 ```ruby
     Net::HTTP.get('pactodex.herokuapp.com', '/pokemons')
 ```
+
+Now we should de able to create our contract test. We just have to run `bundle exec rake generate` on the command line/terminal. This runs the `generate` rake task we defined in the `Rakefile`. It should create a `contracts/pactodex.herokuapp.com/` folder with a `pokemons.json` file inside of it.
+
+The pokemons.json file should contain two keys: `request` and `response`.
+
+The value corresponding to the `request` key should be something like this:
+```javascript
+"request": {
+    "headers": {
+    },
+    "method": "get",
+    "path": "/pokemons"
+  }
+```
+
+This means: "Given that I send a GET request to /pokemons I expect to receive a response in the format described in the value corresponding to the `response` key", which should look something like this:
+
+```javascript
+"response": {
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "status": 200,
+    "body": {
+      "type": "array",
+      "required": true,
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "name": {
+            "type": "string",
+            "required": true
+          },
+          "type": {
+            "type": "string",
+            "required": true
+          },
+          "number": {
+            "type": "integer",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+```
+
+Summing up, the value corresponding to `response` says that we expect to receive a response that:
+
+Has "application/json" as its Content-Type:
+```javascript
+"headers": {
+      "Content-Type": "application/json"
+    },
+```
+
+Have a status code equal to 200:
+```javascript
+"status": 200,
+```
+
+The response type is an array:
+```javascript
+"body": {
+      "type": "array",
+    ...
+```
+
+And each item of this array must have "name", "type" and "number" and all these fields should be strings.
+
+```javascript
+  "name": {
+    "type": "string",
+    "required": true
+  },
+  "type": {
+    "type": "string",
+    "required": true
+  },
+  "number": {
+    "type": "integer",
+    "required": true
+  }
+```
