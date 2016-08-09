@@ -125,26 +125,26 @@ This means: "Given that I send a GET request to /pokemons I expect to receive a 
 
 Summing up, the value corresponding to `response` says that we expect to receive a response that:
 
-Has "application/json" as its Content-Type:
+Has "application/json" as its Content-Type,
 ```javascript
 "headers": {
       "Content-Type": "application/json"
     },
 ```
 
-Have a status code equal to 200:
+has a status code equal to 200,
 ```javascript
 "status": 200,
 ```
 
-The response type is an array:
+the response body is an array,
 ```javascript
 "body": {
       "type": "array",
     ...
 ```
 
-And each item of this array must have "name", "type" and "number" and all these fields should be strings.
+and each item of this array must have a "name" (string), a "type" (string) and a "number" (integer).
 
 ```javascript
   "name": {
