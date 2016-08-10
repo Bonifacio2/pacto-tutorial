@@ -211,6 +211,7 @@ Now you are able to excute contract tests on your owner API service. Use your ur
 Now you are able to excute contract tests on your owner API service. Use your url to generate your contracts and after validate it.
 
 Credits:
+@bonifacio2
 @fernando-alves
 @kamilacarvalho
 
