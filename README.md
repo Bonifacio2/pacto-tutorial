@@ -17,7 +17,7 @@ gem 'json-schema', '2.2.2'
 
 A Gemfile is a file used to define our ruby project's dependencies.
 
-You need to install o Bundler that provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed. Run `gem install bundler`.
+You need to install o Bundler that provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed. Run `sudo gem install bundler`.
 
 Now run a `bundle install`. This should install the dependencies you need to get pacto running.
 
@@ -76,7 +76,7 @@ Sends a HTTP request to http://pactodex.herokuapp.com/pokemons:
     Net::HTTP.get('pactodex.herokuapp.com', '/pokemons')
 ```
 
-Now we should de able to create our contract test. We just have to run `bundle exec rake generate` on the command line/terminal. This runs the `generate` rake task we defined in the `Rakefile`. It should create a `contracts/pactodex.herokuapp.com/` folder with a `pokemons.json` file inside of it.
+Now we should be able to create our contract test. We just have to run `bundle exec rake generate` on the command line/terminal. This runs the `generate` rake task we defined in the `Rakefile`. It should create a `contracts/pactodex.herokuapp.com/` folder with a `pokemons.json` file inside of it.
 
 The pokemons.json file should contain two keys: `request` and `response`.
 
@@ -208,5 +208,5 @@ If everything went well you'll see a `success` message printed to your terminal.
 
 Now you are able to excute contract tests on your owner API service. Use your url to generate your contracts and after validate it.
 
-This tutorial was build with @fernando-alves and @kamilacarvalho.
+
 
