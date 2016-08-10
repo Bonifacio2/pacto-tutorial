@@ -17,6 +17,8 @@ gem 'json-schema', '2.2.2'
 
 A Gemfile is a file used to define our ruby project's dependencies.
 
+You need to install o Bundler that provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed. Run `gem install bundler`.
+
 Now run a `bundle install`. This should install the dependencies you need to get pacto running.
 
 At this point we are ready to write the code that will generate our contract tests. For this we'll use rake tasks. A raketask is basically a set of instructions to be executed.
@@ -203,4 +205,8 @@ if test_results.all?(&:empty?)
 To run our `validate` task we just have to use `bundle exec rake validate` on the command line/terminal.
 
 If everything went well you'll see a `success` message printed to your terminal. If something went wrong an error message with more details will be shown and the task will be aborted.
+
+Now you are able to excute contract tests on your owner API service. Use your url to generate your contracts and after validate it.
+
+This tutorial was build with @fernando-alves and @kamilacarvalho.
 
