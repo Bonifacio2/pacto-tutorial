@@ -208,5 +208,5 @@ If everything went well you'll see a `success` message printed to your terminal.
 
 Now you are able to excute contract tests on your owner API service. Use your url to generate your contracts and after validate it.
 
-
+Now you are able to excute contract tests on your owner API service. Use your url to generate your contracts and after validate it.
 
